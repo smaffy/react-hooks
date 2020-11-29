@@ -8,3 +8,11 @@ import React, {useState} from 'react';
 Array [ 0, dispatchAction() ]
 
 
+    function increment() {
+        // setCounter(counter + 1)
+        // setCounter(counter + 1)
+        setCounter((prevCounter) => {
+            return prevCounter + 1
+        })
+        setCounter(prev => prev + 1)
+    }
