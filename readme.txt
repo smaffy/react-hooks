@@ -16,3 +16,11 @@ Array [ 0, dispatchAction() ]
         })
         setCounter(prev => prev + 1)
     }
+
+2. useEffect
+
+request to db?
+
+    useEffect(() => {
+        console.log('render')
+    }, [])
