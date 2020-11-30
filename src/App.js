@@ -1,59 +1,27 @@
-import React, {useState} from 'react';
-
-
-function computeInitialCounter() {
-    console.log('Some calculations...')
-    return Math.trunc(Math.random() * 20)
-}
+import React, {useState, useEffect} from 'react';
 
 
 function App() {
-    // const [counter, setCounter] = useState(0)
-    // const [counter, setCounter] = useState(computeInitialCounter) No!
-    const [counter, setCounter] = useState(() => {
-        return computeInitialCounter()
-    })
+    const [type, setType] = useState('users')
 
-    const [state, setState] = useState({
-        title: 'Counter',
-        date: Date.now()
-    })
+    // console.log('Component render')
+    // useEffect(() => {
+    //     console.log('render')
+    // }, [})
 
-    function increment() {
-        // setCounter(counter + 1)
-        // setCounter(counter + 1)
-        setCounter((prevCounter) => {
-            return prevCounter + 1
-        })
-        setCounter(prev => prev + 1)
-    }
-
-    function decrement() {
-        setCounter(counter - 1)
-    }
-
-    function updateTitle() {
-        setState(prev => {
-            return {
-                ...prev,
-                title: 'new title'
-            }
-        })
-    }
+    useEffect(() => {
+        console.log('Type change', type)
+    }, [type])
 
     return (
-        <div className="wrapper">
-            <div>
-                <h1>Counter: {counter}</h1>
-                <button onClick={increment} className="btn btn-success">Add</button>
-                <button onClick={decrement} className="btn btn-danger">Remove</button>
-                <button onClick={updateTitle} className="btn btn-default">Change title</button>
+        <div className='wrapper'>
+            <h1>Resource: {type}</h1>
 
-            </div>
-
-            <pre>{JSON.stringify(state, null, 2)}</pre>
+            <button onClick={() => setType('users')}>Users</button>
+            <button onClick={() => setType('todos')}>Todos</button>
+            <button onClick={() => setType('posts')}>Posts</button>
         </div>
-    );
+    )
 }
 
 export default App;
