@@ -3,12 +3,12 @@ import {useAlert} from "./Alert/AlertContext";
 
 
 function Main() {
-    const {toggle} = useAlert()
+    const {show} = useAlert()
 
     return (
         <div>
             <h1>Hello! Context example</h1>
-            <button className="btn btn-success" onClick={toggle}>Show alert</button>
+            <button className="btn btn-success" onClick={() => show(' Text from Main.js')}>Show alert</button>
         </div>
     )
 }

@@ -8,8 +8,9 @@ function Alert() {
     if(!alert.visible) return null
 
     return (
-        <div className={'alert alert-danger'} onClick={alert.toggle}>
+        <div className={'alert alert-danger'} onClick={alert.hide}>
             Important message!
+            {alert.text}
         </div>
     )
 }
