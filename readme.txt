@@ -71,3 +71,10 @@ save something between renders. sohranjaet no ne vyzyvaet render
 5. useCallback
 
     variable = callback
+
+
+
+
+*******************
+usehooks.com
+    custom hooks
