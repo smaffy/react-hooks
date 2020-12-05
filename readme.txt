@@ -54,3 +54,7 @@ save something between renders
         console.log(inputRef.current.value)         // get input value
     })
 
+
+    const focus = () => inputRef.current.focus()
+    <button className="btn btn-success" onClick={focus
+
