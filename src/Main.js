@@ -1,9 +1,9 @@
 import React from "react";
-import {useAlertToggle} from "./Alert/AlertContext";
+import {useAlert} from "./Alert/AlertContext";
 
 
 function Main() {
-    const toggle = useAlertToggle()
+    const {toggle} = useAlert()
 
     return (
         <div>

@@ -5,10 +5,10 @@ import {useAlert} from "./AlertContext";
 function Alert() {
     const alert = useAlert()
 
-    if(!alert) return null
+    if(!alert.visible) return null
 
     return (
-        <div className={'alert alert-danger'}>
+        <div className={'alert alert-danger'} onClick={alert.toggle}>
             Important message!
         </div>
     )
