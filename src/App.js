@@ -1,4 +1,4 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 
 
 function complexCompute(num) {
@@ -13,13 +13,17 @@ function App() {
     const [number, setNumber] = useState(42)
     const [colored, setColored] = useState(false)
 
-    const styles = {
+    const styles = useMemo(() => ({
         color: colored ? "darkred" : "black"
-    }
+    }), [colored])
 
     const computed = useMemo(() => {
         return complexCompute(number)
     }, [number])
+
+    useEffect(() => {
+        console.log('Styles changed')
+    }, [styles])
 
     return (
         <div className='wrapper'>
