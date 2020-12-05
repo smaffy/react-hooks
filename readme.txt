@@ -58,3 +58,10 @@ save something between renders. sohranjaet no ne vyzyvaet render
     const focus = () => inputRef.current.focus()
     <button className="btn btn-success" onClick={focus
 
+4. useMemo
+
+    delaet tjazelye vychislenija tolko esli izmenilsja number i ne tormozit ostalnoe
+
+    const computed = useMemo(() => {
+        return complexCompute(number)
+    }, [number])

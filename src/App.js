@@ -1,30 +1,33 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useMemo} from 'react';
 
+
+function complexCompute(num) {
+    console.log('complexCompute')
+    let i = 0
+    while (i < 1000000000) i++      // zaderzka
+    return num * 2
+}
 
 function App() {
-    // const [renderCount, setRenderCount] = useState(1)
-    const [value, setValue] = useState('initial')
-    const renderCount = useRef(1)
-    const inputRef = useRef(null)
-    const prevValue = useRef('')
 
-    useEffect(() => {
-        renderCount.current++
-        // console.log(inputRef.current.value)
-    })
+    const [number, setNumber] = useState(42)
+    const [colored, setColored] = useState(false)
 
-    useEffect(() => {
-        prevValue.current = value
-    }, [value])
+    const styles = {
+        color: colored ? "darkred" : "black"
+    }
 
-    const focus = () => inputRef.current.focus()
+    const computed = useMemo(() => {
+        return complexCompute(number)
+    }, [number])
 
     return (
         <div className='wrapper'>
-            <h1>Render Count: {renderCount.current}</h1>
-            <h2>Prev Value: {prevValue.current}</h2>
-            <input ref={inputRef} type="text" onChange={e => setValue(e.target.value)} value={value} />
-            <button className="btn btn-success" onClick={focus} >Focus</button>
+            <h1 style={styles}>Computed property: {computed}</h1>
+            <button className={'btn btn-success'} onClick={() => setNumber(prev => prev + 1)}> Plus </button>
+            <button className={'btn btn-danger'} onClick={() => setNumber(prev => prev - 1)}> Minus </button>
+            <button className={'btn btn-warning'} onClick={() => setColored(prev => !prev)}> Change </button>
+
         </div>
     )
 }
