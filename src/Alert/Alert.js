@@ -1,9 +1,9 @@
-import React, {useContext} from "react";
-import {AllertContext} from "./App";
+import React from "react";
+import {useAlert} from "./AlertContext";
 
 
 function Alert() {
-    const alert = useContext(AllertContext)
+    const alert = useAlert()
 
     if(!alert) return null
 
