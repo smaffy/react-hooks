@@ -32,7 +32,7 @@ request to db?
 
 3. useRef
 
-save something between renders
+save something between renders. sohranjaet no ne vyzyvaet render
 
     const renderCount = useRef(1)
     useEffect(() => {
