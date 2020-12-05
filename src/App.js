@@ -1,52 +1,27 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 
 function App() {
-    const [type, setType] = useState('users')
-    const [data, setData] = useState([])
-    const [pos, setPos] = useState({x:0, y:0})
+    // const [renderCount, setRenderCount] = useState(1)
+    const [value, setValue] = useState('initial')
+    const renderCount = useRef(1)
+    const inputRef = useRef(null)
 
-    const mouseMoveHandler = event => {
-        setPos({
-                x: event.clientX,
-                y: event.clientY
-            })
-    }
-
-    // console.log('Component render')
+    // endless cycle
     // useEffect(() => {
-    //     console.log('render')
-    // }, [])
-    // useEffect(() => {
-    //     console.log('ComponentDidMount')
-    // }, [])
+    //     setRenderCount(prev => prev + 1)
+    // })
 
 
     useEffect(() => {
-        fetch(`https://jsonplaceholder.typicode.com/${type}`)
-            .then(response => response.json())
-            .then(json => setData(json))
-    }, [type])
-
-    useEffect(() => {
-        console.log('ComponentDidMount')
-        window.addEventListener('mousemove', mouseMoveHandler)
-
-        return () => {
-            window.removeEventListener('mousemove', mouseMoveHandler)
-        }
-    }, [])
+        renderCount.current++
+        console.log(inputRef.current.value)
+    })
 
     return (
         <div className='wrapper'>
-            <h1>Resource: {type}</h1>
-
-            <button onClick={() => setType('users')}>Users</button>
-            <button onClick={() => setType('todos')}>Todos</button>
-            <button onClick={() => setType('posts')}>Posts</button>
-
-            {/*<pre>{JSON.stringify(data, null, 2)}</pre>*/}
-            <pre>{JSON.stringify(pos, null, 2)}</pre>
+            <h1>Render Count: {renderCount.current}</h1>
+            <input ref={inputRef} type="text" onChange={e => setValue(e.target.value)} value={value} />
         </div>
     )
 }

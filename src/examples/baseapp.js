@@ -3,8 +3,8 @@ import React, {useState} from 'react';
 
 function App() {
     return (
-        <div>
-
+        <div className='wrapper'>
+            <h1></h1>
         </div>
     )
 }

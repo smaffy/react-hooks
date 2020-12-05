@@ -23,4 +23,34 @@ request to db?
 
     useEffect(() => {
         console.log('render')
-    }, [])
+    }, [zavisimost])
+
+    useEffect(() => {
+        console.log('render')
+    })   ------------------------- pri kazdom rendere
+
+
+3. useRef
+
+save something between renders
+
+    const renderCount = useRef(1)
+    useEffect(() => {
+        renderCount.current++
+    })
+    renderCount.current
+
+
+    // endless cycle
+    // useEffect(() => {
+    //     setRenderCount(prev => prev + 1)
+    // })
+
+
+    const inputRef = useRef(null)
+    <input ref={inputRef}
+    useEffect(() => {
+        renderCount.current++
+        console.log(inputRef.current.value)         // get input value
+    })
+
