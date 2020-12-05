@@ -65,3 +65,9 @@ save something between renders. sohranjaet no ne vyzyvaet render
     const computed = useMemo(() => {
         return complexCompute(number)
     }, [number])
+
+    variable = result
+
+5. useCallback
+
+    variable = callback

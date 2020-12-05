@@ -5,8 +5,9 @@ function ItemsList({getItems}) {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        const newItems = getItems()
+        const newItems = getItems(42)
         setItems(newItems)
+        console.log('render')
     }, [getItems])
 
     return (

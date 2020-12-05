@@ -1,4 +1,4 @@
-import React, {useState, useEffect,} from 'react';
+import React, {useState, useCallback} from 'react';
 import ItemsList from "./ItemsList";
 
 
@@ -11,9 +11,9 @@ function App() {
         color: colored ? "red" : "black"
     }
 
-    const generateItemsFromAPI = () => {
-        return new Array(count).fill('').map((_, i) => `Element ${i + 1}`)
-    }
+    const generateItemsFromAPI = useCallback((indexNumber) => {
+        return new Array(count).fill('').map((_, i) => `Element ${i + indexNumber}`)
+    }, [count])
 
     return (
         <div className='wrapper'>
