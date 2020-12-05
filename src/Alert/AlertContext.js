@@ -2,9 +2,14 @@ import React, {useState, useContext} from 'react';
 
 
 const AlertContext = React.createContext()
+const AlertToggleContext = React.createContext()
 
 export const useAlert = () => {
     return useContext(AlertContext)
+}
+
+export const useAlertToggle = () => {
+    return useContext(AlertToggleContext)
 }
 
 export const AlertProvider = ({children}) => {
@@ -14,7 +19,9 @@ export const AlertProvider = ({children}) => {
 
     return (
         <AlertContext.Provider value={alert}>
-            {children}
+            <AlertToggleContext.Provider value={toggle}>
+                {children}
+            </AlertToggleContext.Provider>
         </AlertContext.Provider>
     )
 }
