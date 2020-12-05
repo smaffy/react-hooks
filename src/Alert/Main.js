@@ -1,5 +1,5 @@
 import React from "react";
-import {useAlert} from "./Alert/AlertContext";
+import {useAlert} from "./AlertContext";
 
 
 function Main() {

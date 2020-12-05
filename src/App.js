@@ -1,21 +1,21 @@
-import React from 'react';
-import Main from "./Main";
-import Alert from "./Alert/Alert";
-import {AlertProvider} from "./Alert/AlertContext";
+import React, {useState} from 'react';
 
 
 
 function App() {
+    const [name, setName] = useState('')
+
+    const changeHandler = event => {
+        setName(event.target.value)
+    }
 
     return (
-        <AlertProvider>
-            <div className='container pt-3'>
-                <Alert />
-                <Main toggle={() => {}} />
-            </div>
-        </AlertProvider>
+        <div className={'container pt-3'}>
 
-)
+
+            <input type="text" value={name} onChange={changeHandler} />
+        </div>
+    )
 }
 
 export default App;
